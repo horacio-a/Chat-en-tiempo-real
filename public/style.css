@@ -4,7 +4,7 @@ body{
 }
 
 #mensajes{
-    background-color: white;
+    background-color: rgb(0, 0, 0);
     padding-left: 5px;
     height: 300px;
     width: auto;
