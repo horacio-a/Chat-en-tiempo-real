@@ -2,7 +2,6 @@ $(function () {
     const socket = io();
     var nick = '';
 
-    //Obtenemos los elementos del DOM
 
     const messageForm = $('#messages-form');
     const messageBox = $('#message');
@@ -13,18 +12,13 @@ $(function () {
     const nickName = $('#nick-name');
     const userNames = $('#usernames');
 
-    //Eventos
 
     messageForm.submit(e => {
-        //Evitamos que se recargue la pantalla:
         e.preventDefault();
-        //Enviamos el evento que debe recibir el servidor:
         socket.emit('enviar mensaje', messageBox.val());
-        //Limpiamos el input
         messageBox.val('');
     });
 
-    //Obtenemos respuesta del servidor:
     socket.on('nuevo mensaje', function (datos) {
         let color = '#f5f4f4';
         console.log(datos.nick)
@@ -94,7 +88,6 @@ $(function () {
 
     });
 
-    //Obtenemos el array de usuarios de sockets.js
     socket.on('usernames', datos => {
         let html = '';
         let color = '#000';
