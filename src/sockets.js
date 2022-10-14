@@ -3,7 +3,9 @@ module.exports = (io) => {
     let nickNames = [];
 
     io.on('connection', socket => {
-        // console.log('Nuevo usuario conectado');
+        var today = new Date();
+        var now = today.toLocaleString();
+        // console.log(now  + ' Nuevo usuario conectado');
 
         socket.on('aviso nuevo usuario', (datos) => {
             //console.log(datos);
@@ -17,8 +19,11 @@ module.exports = (io) => {
         //Al recibir un mensaje recojemos los datos
         socket.on('enviar mensaje', (datos) => {
             //console.log(datos);
+            var today = new Date();
+            var now = today.getHours()+':'+today.getMinutes()+':'+today.getSeconds();
             //Lo enviamos a todos los usuarios (clientes)
             io.sockets.emit('nuevo mensaje', {
+                time: now, 
                 msg: datos,
                 nick: socket.nickname
             });
@@ -48,8 +53,9 @@ module.exports = (io) => {
                 return;
             } else {
                 //buscamos su posición en el array y lo eliminamos con splice()
+  
                 nickNames.splice(nickNames.indexOf(socket.nickname), 1);
-                // console.log('salio un usuario');
+
 
                 //Enviamos al cliente el array de usuarios actualizado:
                 actualizarUsuarios();
@@ -67,3 +73,4 @@ module.exports = (io) => {
 
     
 }
+

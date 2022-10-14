@@ -11,7 +11,6 @@ $(function () {
     const nickForm = $('#nick-form');
     const nickError = $('#nick-error');
     const nickName = $('#nick-name');
-
     const userNames = $('#usernames');
 
     //Eventos
@@ -28,16 +27,30 @@ $(function () {
     //Obtenemos respuesta del servidor:
     socket.on('nuevo mensaje', function (datos) {
         let color = '#f5f4f4';
+        console.log(datos.nick)
+        if( datos.nick == undefined){
+            chat.children("div").remove()
+            $('#nick-wrap').show();
+            $('#content-wrap').hide();
+
+            nickError.html(`
+            <div class="alert alert-danger">
+            hubo un error, por favor vuelva a ingresar su usuario
+            </div>
+            `); 
+
+            
+        }else{
         if (nick == datos.nick) {
             color = '#9ff4c5';
         }
 
         chat.append(`
         <div class="msg-area mb-2" style="background-color:${color}">
-            <p class="msg"><b>${datos.nick} :</b> ${datos.msg}</p>
+            <p class="msg">${datos.time} <b>${datos.nick} :</b> ${datos.msg}</p>
         </div>
         `);
-
+    }
     });
 
     socket.on('avisar nuevo usuario', function (datos) {
@@ -53,6 +66,8 @@ $(function () {
         `);
 
     });
+
+
 
 
     nickForm.submit(e => {
@@ -88,7 +103,8 @@ $(function () {
         for (let i = 0; i < datos.length; i++) {
             if (nick == datos[i]) {
                 color = '#027f43';
-                salir = `<a class="enlace-salir" href="/"><i class="fas fa-sign-out-alt salir"></i></a>`;
+                salir = `<a class="enlace-salir" id='enlace-salir' href="/"><i class="fas fa-sign-out-alt salir"></i></a>`;
+
             } else {
                 color = '#000';
                 salir = '';
@@ -98,7 +114,6 @@ $(function () {
 
         userNames.html(html);
     });
-
 
 
 
@@ -118,3 +133,5 @@ mode.addEventListener('click', function () {
     console.log(mode.value)
 
 })
+
+
