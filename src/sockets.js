@@ -3,7 +3,7 @@ module.exports = (io) => {
     let nickNames = [];
 
     io.on('connection', socket => {
-        console.log('Nuevo usuario conectado');
+        // console.log('Nuevo usuario conectado');
 
         socket.on('aviso nuevo usuario', (datos) => {
             //console.log(datos);
@@ -49,7 +49,7 @@ module.exports = (io) => {
             } else {
                 //buscamos su posición en el array y lo eliminamos con splice()
                 nickNames.splice(nickNames.indexOf(socket.nickname), 1);
-                console.log('salio un usuario');
+                // console.log('salio un usuario');
 
                 //Enviamos al cliente el array de usuarios actualizado:
                 actualizarUsuarios();
@@ -61,5 +61,9 @@ module.exports = (io) => {
             io.sockets.emit('usernames', nickNames);
         }
 
+            actualizarUsuarios();
+        
     });
+
+    
 }

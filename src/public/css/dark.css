@@ -1,28 +1,10 @@
 body{
+    width: 100%;
+    height: 100%;
+    position: absolute;
     margin: 0%;
-    background: #ECE9E6;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
-
-
-.form-switch .form-check-input{
-    height: 50%;
-    width: 3.5vw;}
-
-
-
-.form-check{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    padding-right: 1vw;
-    height: 5vh ;
-    margin: 0%;
-}
-
 
 #content-wrap{
     display: none;
@@ -52,11 +34,13 @@ body{
 
 .main-formulario-usuario{
     width: 100%;    
-    height: 70vh;
-    margin-top: 15vh;
+    height: 85vh;
+    padding-top: 15vh;
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    background-color: #1d1d1c;
+
 }
 
 nav{
@@ -65,9 +49,32 @@ nav{
     justify-content: center;
     width: 100%;    
     height: 10vh;
-    background-color: #131311;
-    color: white;
+    background-color: #000000;
+    margin: 0%;
+    color: rgb(255, 255, 255);
     font-size: 2.5vh;
+}
+
+
+.main-formulario-usuario .card{
+    background-color: #dddddd;
+
+}
+
+.form-check{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding-right: 1vw;
+    background-color: #1d1d1c;
+    height: 5vh ;
+    margin: 0%;
+}
+
+.form-switch .form-check-input{
+    height: 50%;
+    width: 3.5vw;
 }
 
 .container{
@@ -79,5 +86,6 @@ nav{
     max-width: none;
     width: 100%;    
     height: 85vh;
+    background-color: #1d1d1c;
 
 }
