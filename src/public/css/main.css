@@ -30,6 +30,8 @@ body{
 
 #chat{
     height: 480px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
 }
 
 .msg-area{
