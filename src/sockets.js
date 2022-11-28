@@ -14,10 +14,10 @@ module.exports = (io) => {
 
         socket.on('enviar mensaje', (datos) => {
             var resolvedOptions = Intl.DateTimeFormat().resolvedOptions()
-            var now = new Date().toLocaleString("es-MX", {timeZone: resolvedOptions})
-            console.log(resolvedOptions+' test del resolvedOptions')
+            // var now = new Date().toLocaleString("es-MX", {timeZone: resolvedOptions})
+            console.log(resolvedOptions)
             io.sockets.emit('nuevo mensaje', {
-                time: now, 
+                // time: now, 
                 msg: datos,
                 nick: socket.nickname
             });
