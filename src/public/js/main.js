@@ -21,6 +21,7 @@ $(function () {
 
     socket.on('nuevo mensaje', function (datos) {
         let color = '#f5f4f4';
+        console.log(datos.time)
         console.log(datos.nick)
         if( datos.nick == undefined){
             chat.children("div").remove()
