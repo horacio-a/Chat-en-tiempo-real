@@ -42,7 +42,7 @@ $(function () {
 
         chat.append(`
         <div class="msg-area mb-2" style="background-color:${color}">
-            <p class="msg"> <b>${datos.nick} :</b> ${datos.msg}</p>
+            <p class="msg">${datos.time} <b>${datos.nick} :</b> ${datos.msg}</p>
         </div>
         `);
     }
