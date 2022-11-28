@@ -15,7 +15,7 @@ module.exports = (io) => {
         socket.on('enviar mensaje', (datos) => {
             var resolvedOptions = Intl.DateTimeFormat().resolvedOptions().timeZone
             var now = new Date().toLocaleString("es-MX", {timeZone: resolvedOptions})
-            console.log(resolvedOptions)
+            console.log(resolvedOptions+' test del resolvedOptions')
             io.sockets.emit('nuevo mensaje', {
                 time: now, 
                 msg: datos,
