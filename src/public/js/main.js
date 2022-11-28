@@ -20,32 +20,33 @@ $(function () {
     });
 
     socket.on('nuevo mensaje', function (datos) {
-        let color = '#f5f4f4';
-        console.log(datos.time)
-        console.log(datos.nick)
-        if( datos.nick == undefined){
-            chat.children("div").remove()
-            $('#nick-wrap').show();
-            $('#content-wrap').hide();
+        if (datos.msg != '') {
+            let color = '#f5f4f4';
+            if (datos.nick == undefined) {
+                chat.children("div").remove()
+                $('#nick-wrap').show();
+                $('#content-wrap').hide();
 
-            nickError.html(`
-            <div class="alert alert-danger">
-            hubo un error, por favor vuelva a ingresar su usuario
+                nickError.html(`
+                <div class="alert alert-danger">
+                hubo un error, por favor vuelva a ingresar su usuario
+                </div>
+                `);
+
+
+            } else {
+                if (nick == datos.nick) {
+                    color = '#9ff4c5';
+                }
+
+                chat.append(`
+            <div class="msg-area mb-2" style="background-color:${color}">
+                <p class="msg">${datos.time} <b>${datos.nick} :</b> ${datos.msg}</p>
             </div>
-            `); 
-
-            
-        }else{
-        if (nick == datos.nick) {
-            color = '#9ff4c5';
+            `);
+            }
         }
 
-        chat.append(`
-        <div class="msg-area mb-2" style="background-color:${color}">
-            <p class="msg">${datos.time} <b>${datos.nick} :</b> ${datos.msg}</p>
-        </div>
-        `);
-    }
     });
 
     socket.on('avisar nuevo usuario', function (datos) {
