@@ -13,8 +13,8 @@ module.exports = (io) => {
         });
 
         socket.on('enviar mensaje', (datos) => {
-            var today = new Date();
-            var now = today.toTimeString().split( ' ')[0];
+            var resolvedOptions = Intl.DateTimeFormat().resolvedOptions().timeZone
+            var now = new Date().toLocaleString("es-MX", {timeZone: resolvedOptions})
             io.sockets.emit('nuevo mensaje', {
                 time: now, 
                 msg: datos,

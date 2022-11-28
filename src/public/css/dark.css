@@ -15,7 +15,10 @@ body{
     overflow-y: scroll;
     scroll-behavior: smooth;
 }
-
+.login{
+    height: 20vh;
+    width: 65vh;
+}
 .msg-area{
     border-radius: 4px;
 }
