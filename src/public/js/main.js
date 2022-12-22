@@ -36,11 +36,14 @@ $(function () {
 
             } else {
                 if (nick == datos.nick) {
-                    color = '#9ff4c5';
+                    color = '#198754';
+                    backcolor = 'white'
+                }else{
+                    backcolor = '#1d1d1c'
                 }
 
                 chat.append(`
-            <div class="msg-area mb-2" style="background-color:${color}">
+            <div class="msg-area mb-2" style="background-color:${color}; color:${backcolor};">
                 <p class="msg">${datos.time} <b>${datos.nick} :</b> ${datos.msg}</p>
             </div>
             `);
@@ -52,11 +55,14 @@ $(function () {
     socket.on('avisar nuevo usuario', function (datos) {
         let color = '#f5f4f4';
         if (nick == datos.nick) {
-            color = '#9ff4c5';
+            color = '#198754';
+            backcolor = 'white'
+        }else{
+            backcolor = '#1d1d1c'
         }
 
         chat.append(`
-        <div class="msg-area mb-2" style="background-color:${color}">
+        <div class="msg-area mb-2" style="background-color:${color}; color:${backcolor};">
             <p class="msg"><b>${datos.nick} se a conectado</p>
         </div>
         `);
@@ -92,12 +98,13 @@ $(function () {
 
     socket.on('usernames', datos => {
         let html = '';
+        
         let color = '#000';
         let salir = '';
         console.log(nick);
         for (let i = 0; i < datos.length; i++) {
             if (nick == datos[i]) {
-                color = '#027f43';
+                color = '#198754';
                 salir = `<a class="enlace-salir" id='enlace-salir' href="/"><i class="fas fa-sign-out-alt salir"></i></a>`;
 
             } else {
