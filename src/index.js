@@ -6,7 +6,7 @@ const app = express();
 const server = require('http').Server(app);
 const socketio = require('socket.io')(server);
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 4000);
 
 require('./sockets')(socketio);
 
